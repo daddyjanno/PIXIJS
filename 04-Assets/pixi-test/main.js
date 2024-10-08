@@ -62,35 +62,81 @@ import {
 //------------------------
 
 // Append the application canvas to the document body
+// const app = new Application()
+// await app.init({ background: '#1099bb', resizeTo: window })
+// document.body.appendChild(app.canvas)
+
+// // Add the assets to load
+// Assets.add({
+//     alias: 'flowerTop',
+//     src: 'https://pixijs.com/assets/flowerTop.png',
+// })
+// Assets.add({ alias: 'eggHead', src: 'https://pixijs.com/assets/eggHead.png' })
+
+// // Load the assets and get a resolved promise once both are loaded
+// const texturesPromise = Assets.load(['flowerTop', 'eggHead']) // => Promise<{flowerTop: Texture, eggHead: Texture}>
+
+// // When the promise resolves, we have the texture!
+// texturesPromise.then((textures) => {
+//     console.log(textures)
+
+//     const flower = Sprite.from(textures.flowerTop)
+//     flower.anchor.set(0.5)
+//     flower.x = app.screen.width * 0.25
+//     flower.y = app.screen.height / 2
+
+//     app.stage.addChild(flower)
+
+//     const egg = Sprite.from(textures.eggHead)
+//     egg.anchor.set(0.5)
+//     egg.x = app.screen.width * 0.75
+//     egg.y = app.screen.height / 2
+
+//     app.stage.addChild(egg)
+// })
+
+//------------------------
+// Background loading
+//------------------------
+
+// Create a new application
 const app = new Application()
-await app.init({ background: '#1099bb', resizeTo: window })
-document.body.appendChild(app.canvas)
 
-// Add the assets to load
-Assets.add({
-    alias: 'flowerTop',
-    src: 'https://pixijs.com/assets/flowerTop.png',
-})
-Assets.add({ alias: 'eggHead', src: 'https://pixijs.com/assets/eggHead.png' })
+async function init() {
+    // Initialize the application
+    await app.init({ background: '#1099bb', resizeTo: window })
 
-// Load the assets and get a resolved promise once both are loaded
-const texturesPromise = Assets.load(['flowerTop', 'eggHead']) // => Promise<{flowerTop: Texture, eggHead: Texture}>
+    // Append the application canvas to the document body
+    document.body.appendChild(app.canvas)
 
-// When the promise resolves, we have the texture!
-texturesPromise.then((textures) => {
-    console.log(textures)
+    // Manifest example
+    const manifestExample = {
+        bundles: [
+            {
+                name: 'load-screen',
+                assets: [
+                    {
+                        alias: 'flowerTop',
+                        src: 'https://pixijs.com/assets/flowerTop.png',
+                    },
+                ],
+            },
+            {
+                name: 'game-screen',
+                assets: [
+                    {
+                        alias: 'eggHead',
+                        src: 'https://pixijs.com/assets/eggHead.png',
+                    },
+                ],
+            },
+        ],
+    }
 
-    const flower = Sprite.from(textures.flowerTop)
-    flower.anchor.set(0.5)
-    flower.x = app.screen.width * 0.25
-    flower.y = app.screen.height / 2
+    await Assets.init({ manifest: manifestExample })
 
-    app.stage.addChild(flower)
+    // Bundles can be loaded in the background too!
+    Assets.backgroundLoadBundle(['load-screen', 'game-screen'])
+}
 
-    const egg = Sprite.from(textures.eggHead)
-    egg.anchor.set(0.5)
-    egg.x = app.screen.width * 0.75
-    egg.y = app.screen.height / 2
-
-    app.stage.addChild(egg)
-})
+init()
