@@ -1,4 +1,4 @@
-import * as PIXI from '../node_modules/pixi.js/dist/pixi.mjs'
+import * as PIXI from '../../node_modules/pixi.js/dist/pixi.mjs'
 
 // Create a PixiJS application.
 const app = new PIXI.Application()

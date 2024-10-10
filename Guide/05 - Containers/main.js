@@ -60,7 +60,7 @@ import {
     Container,
     Graphics,
     Text,
-} from '../node_modules/pixi.js/dist/pixi.mjs'
+} from '../../node_modules/pixi.js/dist/pixi.mjs'
 
 let app = new Application()
 globalThis.__PIXI_APP__ = app

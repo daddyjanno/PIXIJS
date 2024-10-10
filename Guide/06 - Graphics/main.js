@@ -2,7 +2,7 @@ import {
     Application,
     Graphics,
     GraphicsContext,
-} from '../node_modules/pixi.js/dist/pixi.mjs'
+} from '../../node_modules/pixi.js/dist/pixi.mjs'
 
 console.log('06 - Graphics')
 
@@ -65,3 +65,7 @@ document.body.appendChild(app.canvas)
 // let circleGraphics = new Graphics()
 
 // circleGraphics.context.circle(100, 100, 50).fill('red')
+
+// ---------------------------
+//      Graphics For Display
+// ---------------------------
