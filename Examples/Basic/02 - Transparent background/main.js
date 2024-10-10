@@ -1,10 +1,14 @@
-console.log("Examples - Basic - Transparent background");
+console.log('Examples - Basic - Transparent background')
 
-import { Application, Assets, Sprite } from "../../../node_modules/pixi.js/dist/pixi.mjs";
+import {
+    Application,
+    Assets,
+    Sprite,
+} from '../../../node_modules/pixi.js/dist/pixi.mjs'
 
 const app = new Application()
 
-await app.init({backgroundAlpha: 0, resizeTo: window})
+await app.init({ backgroundAlpha: 0, resizeTo: window })
 
 document.body.appendChild(app.canvas)
 

@@ -1,9 +1,14 @@
-console.log("Example - Basic - Tinting");
+console.log('Example - Basic - Tinting')
 
-import { Application, Assets, Rectangle, Sprite } from "../../../node_modules/pixi.js/dist/pixi.mjs";
+import {
+    Application,
+    Assets,
+    Rectangle,
+    Sprite,
+} from '../../../node_modules/pixi.js/dist/pixi.mjs'
 
 const app = new Application()
-await app.init({resizeTo: window})
+await app.init({ resizeTo: window })
 document.body.appendChild(app.canvas)
 
 const texture = await Assets.load('https://pixijs.com/assets/eggHead.png')
@@ -50,10 +55,10 @@ for (let i = 0; i < totalDudes; i++) {
 // Create a bounding box for the little dudes
 const dudeBoundsPadding = 100
 const dudeBounds = new Rectangle(
-    -dudeBoundsPadding, 
-    -dudeBoundsPadding, 
-    app.screen.width+dudeBoundsPadding*2, 
-    app.screen.height+dudeBoundsPadding*2
+    -dudeBoundsPadding,
+    -dudeBoundsPadding,
+    app.screen.width + dudeBoundsPadding * 2,
+    app.screen.height + dudeBoundsPadding * 2
 )
 
 app.ticker.add(() => {
@@ -77,6 +82,5 @@ app.ticker.add(() => {
         } else if (dude.y > dudeBounds.x + dudeBounds.height) {
             dude.y -= dudeBounds.height
         }
-        
     }
 })

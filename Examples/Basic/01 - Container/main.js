@@ -1,6 +1,11 @@
-import { Application, Assets, Container, Sprite } from "../../../node_modules/pixi.js/dist/pixi.mjs"
+import {
+    Application,
+    Assets,
+    Container,
+    Sprite,
+} from '../../../node_modules/pixi.js/dist/pixi.mjs'
 
-console.log("Examples - Basic - Container")
+console.log('Examples - Basic - Container')
 
 const app = new Application()
 await app.init({ background: '#1099bb', resizeTo: window })
@@ -13,8 +18,8 @@ const texture = await Assets.load('https://pixijs.com/assets/bunny.png')
 
 for (let i = 0; i < 25; i++) {
     const bunny = new Sprite(texture)
-    bunny.x = (i % 5) * 40;
-    bunny.y = Math.floor(i / 5) * 40;
+    bunny.x = (i % 5) * 40
+    bunny.y = Math.floor(i / 5) * 40
 
     container.addChild(bunny)
 }
