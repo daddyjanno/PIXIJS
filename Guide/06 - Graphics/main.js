@@ -10,10 +10,10 @@ const app = new Application()
 await app.init({ width: 640, height: 360 })
 document.body.appendChild(app.canvas)
 
-// // Create a Graphics object, draw a rectangle and fill it
+// Create a Graphics object, draw a rectangle and fill it
 // let obj = new Graphics().rect(50, 50, 200, 100).fill(0xff0000)
 
-// // There is also support for svg
+// There is also support for svg
 // let mySvg = new Graphics().svg(`
 //     <svg>
 //       <path d="M 100 350 q 150 -300 300 0" stroke="blue" />
@@ -31,15 +31,20 @@ document.body.appendChild(app.canvas)
 
 // for (let i = 0; i < 5; i++) {
 //     let circle = new Graphics().circle(100, 100, 50).fill('red')
+//     circle.x += i * 100
+//     app.stage.addChild(circle)
 // }
 
 // Sharing a GraphicsContext:
 
-// let circleContext = new GraphicsContext().circle(100, 100, 50).fill('red')
+let circleContext = new GraphicsContext().circle(100, 100, 50).fill('red')
 
-// for (let i = 0; i < 5; i++) {
-//     let duplicate = new Graphics(circleContext)
-// }
+for (let i = 0; i < 5; i++) {
+    let duplicate = new Graphics(circleContext)
+    duplicate.x += i * 100
+
+    app.stage.addChild(duplicate)
+}
 
 // let circleContext = new GraphicsContext().circle(100, 100, 50).fill('red')
 // let rectangleContext = new GraphicsContext().rect(0, 0, 50, 50).fill('red')
@@ -48,6 +53,8 @@ document.body.appendChild(app.canvas)
 // let frameIndex = 0
 
 // const graphics = new Graphics(frames[frameIndex])
+
+// app.stage.addChild(graphics)
 
 // animate from square to circle:
 
