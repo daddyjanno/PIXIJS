@@ -1,12 +1,6 @@
 console.log(' Example - Basic - Particle Container')
 
-import {
-    Application,
-    Assets,
-    Container,
-    Rectangle,
-    Sprite,
-} from '../../../node_modules/pixi.js/dist/pixi.mjs'
+import { Application, Assets, Container, Rectangle, Sprite } from 'pixi.js'
 
 const app = new Application()
 await app.init({ backgound: '#1099bb', resizeTo: window })
