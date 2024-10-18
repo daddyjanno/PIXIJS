@@ -1,5 +1,5 @@
 {
-    "name": "01---pixi-text",
+    "name": "02---bitmap-text",
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
