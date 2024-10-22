@@ -12,8 +12,16 @@ await app.init({
 
 document.body.appendChild(app.canvas)
 
-const ball = new Graphics().circle(0, 0, 50).fill('red')
+const radius = 50
+const ball = new Graphics().circle(0, 0, radius).fill('red')
 ball.x = app.screen.width / 2
 ball.y = app.screen.height / 2
 
 app.stage.addChild(ball)
+
+app.ticker.add(() => {
+    ball.y += 5
+    if (ball.y > app.screen.height + radius) {
+        ball.y = -radius
+    }
+})
