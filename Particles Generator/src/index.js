@@ -27,6 +27,10 @@ app.ticker.add(() => {
         ) {
             p.x = app.screen.width / 2
             p.y = app.screen.height / 2
+            p.velocity = {
+                x: Math.random() * 10 - 5,
+                y: Math.random() * 10 - 5,
+            }
         }
     }
     if (particles.length < maxParticles) {
@@ -38,6 +42,7 @@ app.ticker.add(() => {
             x: Math.random() * 10 - 5,
             y: Math.random() * 10 - 5,
         }
+        b.alpha = 0.2 + Math.random() * 0.8
 
         particles.push(b)
         app.stage.addChild(b)
