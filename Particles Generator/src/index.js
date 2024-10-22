@@ -43,6 +43,7 @@ app.ticker.add(() => {
             y: Math.random() * 10 - 5,
         }
         b.alpha = 0.2 + Math.random() * 0.8
+        b.tint = Math.random() * 0xffffff
 
         particles.push(b)
         app.stage.addChild(b)
