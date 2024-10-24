@@ -83,9 +83,13 @@ handle
 function onDragStart() {
     app.stage.eventMode = 'static'
     app.stage.addEventListener('pointermove', onDrag)
+    app.stage.addEventListener('pointermove', onDrag)
+    app.stage.addEventListener('pointermove', onDrag)
+    app.stage.addEventListener('pointermove', onDrag)
 }
 function onDragEnd() {
     app.stage.eventMode = 'auto'
+    app.stage.removeEventListener('pointermove', onDrag)
     app.stage.removeEventListener('pointermove', onDrag)
 }
 
