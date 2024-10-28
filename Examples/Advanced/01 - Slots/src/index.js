@@ -127,7 +127,7 @@ const style = new TextStyle({
     wordWrapWidth: 440,
 })
 
-const playText = new Text('Spin the wheels!', style)
+const playText = new Text({ text: 'Spin the wheels!', style })
 
 playText.x = Math.round((bottom.width - playText.width) / 2)
 playText.y =
