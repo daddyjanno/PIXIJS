@@ -1,5 +1,6 @@
 import { Application } from 'pixi.js'
 import { addStars } from './addStars'
+import { addMoon } from './addMoon'
 
 console.log('Tutorial 03')
 
@@ -12,3 +13,4 @@ await app.init({
 document.body.appendChild(app.canvas)
 
 addStars(app)
+addMoon(app)
