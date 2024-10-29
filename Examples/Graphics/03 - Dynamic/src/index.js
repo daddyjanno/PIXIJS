@@ -10,7 +10,7 @@ app.stage.hitArea = app.screen
 const graphics = new Graphics()
 
 // Draw a shape
-graphics
+const firstShape = graphics
     .moveTo(50, 50)
     .lineTo(250, 50)
     .lineTo(100, 100)
@@ -21,7 +21,7 @@ graphics
     .stroke({ width: 10, color: 0xffd900 })
 
 // Draw a second shape
-graphics
+const secondShape = graphics
     .moveTo(210, 300)
     .lineTo(450, 320)
     .lineTo(570, 350)
@@ -45,6 +45,8 @@ graphics.lineTo(600, 300)
 graphics.stroke({ width: 20, color: 0x33ff00 })
 
 app.stage.addChild(graphics)
+
+graphics.alpha = 0.2
 
 // Let's create a moving shape
 
