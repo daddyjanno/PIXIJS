@@ -1,4 +1,5 @@
 import { Application } from 'pixi.js'
+import { addStars } from './addStars'
 
 console.log('Tutorial 03')
 
@@ -9,3 +10,5 @@ await app.init({
     background: '#021f4b',
 })
 document.body.appendChild(app.canvas)
+
+addStars(app)
