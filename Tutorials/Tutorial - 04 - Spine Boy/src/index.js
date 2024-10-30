@@ -22,28 +22,4 @@ Assets.add({
     src: './assets/spineboy-pma.atlas',
 })
 
-await Assets.load(['spineSkeleton', 'spineAtlas']).then((ressource) => {
-    console.log(ressource)
-
-    const animation = new Spine(ressource.spineData)
-    console.log(animation)
-
-    app.stage.addChild(animation)
-})
-
-const spineboy = Spine.from('spineSkeleton', 'spineAtlas')
-console.log(spineboy)
-
-// Set the default mix time to use when transitioning
-// from one animation to the next.
-spineboy.state.data.defaultMix = 0.2
-
-// Center the spine object on screen.
-spineboy.x = window.innerWidth / 2
-spineboy.y = window.innerHeight / 2 + spineboy.getBounds().height / 2
-
-// Set animation "run" on track 0, looped.
-spineboy.state.setAnimation(0, 'run', true)
-
-// Add the display object to the stage.
-app.stage.addChild(spineboy)
+await Assets.load(['spineSkeleton', 'spineAtlas'])
