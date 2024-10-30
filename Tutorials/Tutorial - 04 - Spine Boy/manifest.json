@@ -1,0 +1,17 @@
+{
+    "bundles": [
+        {
+            "name": "spineboy",
+            "assets": [
+                {
+                    "alias": ["spineAtlas"],
+                    "src": ["./assets/spineboy-pma.atlas"]
+                },
+                {
+                    "alias": ["spineSkeleton"],
+                    "src": ["./assets/spineboy-pro.skel"]
+                }
+            ]
+        }
+    ]
+}
