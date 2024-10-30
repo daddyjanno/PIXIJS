@@ -3,6 +3,7 @@ import { addStars } from './addStars'
 import { addMoon } from './addMoon'
 import { addMountains } from './addMountains'
 import { addTrees } from './addTrees'
+import { addFloor } from './addFloor'
 
 console.log('Tutorial 03')
 
@@ -18,3 +19,4 @@ addStars(app)
 addMoon(app)
 addMountains(app)
 addTrees(app)
+addFloor(app)
