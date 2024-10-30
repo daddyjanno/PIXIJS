@@ -10,7 +10,20 @@ export function addTrain(app, container) {
     const scale = 0.75
     container.scale.set(scale)
     container.x = app.screen.width / 2 - head.width / 2
-    container.y = app.screen.height - 35 - 55 * scale
+
+    // Define animation parameters.
+    let elapsed = 0
+    const shakeDistance = 3
+    const baseY = app.screen.height - 35 - 55 * scale
+    const speed = 0.5
+    container.y = baseY
+
+    app.ticker.add((time) => {
+        elapsed += time.deltaTime
+        const offset =
+            Math.sin(elapsed * 0.5 * speed) * 0.5 + 0.5 + shakeDistance
+        container.y = baseY + offset
+    })
 
     app.stage.addChild(container)
 }
