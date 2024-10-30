@@ -1,6 +1,17 @@
-import { Application, Assets, Graphics, Sprite, Text, TextStyle } from 'pixi.js'
+import {
+    Application,
+    Assets,
+    Container,
+    Graphics,
+    Sprite,
+    Text,
+    TextStyle,
+} from 'pixi.js'
+
+import manifest from '../manifest.json'
 
 console.log('Beginner Guide')
+console.log(manifest)
 
 const app = new Application()
 await app.init({
@@ -11,20 +22,31 @@ await app.init({
 globalThis.__PIXI_APP__ = app
 document.body.appendChild(app.canvas)
 
-const rectangle = new Graphics()
-    .rect(200, 200, 100, 150)
-    .fill({ color: 0xffffff, alpha: 0.8 })
-    .stroke({ width: 8, color: 0x00ff00 })
+// const rectangle = new Graphics()
+//     .rect(200, 200, 100, 150)
+//     .fill({ color: 0xffffff, alpha: 0.8 })
+//     .stroke({ width: 8, color: 0x00ff00 })
 
-rectangle.eventMode = 'static'
-rectangle.cursor = 'pointer'
+// rectangle.eventMode = 'static'
+// rectangle.cursor = 'pointer'
 
-rectangle.on('pointerdown', moveRectangle)
+// rectangle.on('pointerdown', moveRectangle)
 
-function moveRectangle() {
-    rectangle.position.x += 10
-    rectangle.position.y -= 10
-}
+// function moveRectangle() {
+//     rectangle.position.x += 10
+//     rectangle.position.y -= 10
+// }
+
+const circle = new Graphics()
+// app.ticker.add(() => {
+//     circle
+//         .circle(
+//             Math.random() * app.screen.width,
+//             Math.random() * app.screen.height,
+//             5
+//         )
+//         .fill({ color: 0xffffff })
+// })
 
 // const line = new Graphics()
 //     .moveTo(100, 700)
@@ -93,4 +115,25 @@ function moveRectangle() {
 //Or
 // sprite.anchor.set(0.5)
 
-app.stage.addChild(rectangle)
+// const container = new Container()
+// const rectangle = new Graphics().rect(0, 0, 200, 100).fill({ color: 0xffffff })
+
+// container.addChild(rectangle)
+// container.position.set(200, 200)
+
+// console.log(`x: ${rectangle.x}, y: ${rectangle.y}`)
+
+// const x = rectangle.getGlobalPosition().x
+// const y = rectangle.getGlobalPosition().y
+
+// console.log(`x: ${x}, y: ${y}`)
+
+await Assets.init({
+    manifest,
+})
+
+const monsterAssets = await Assets.loadBundle('monsters')
+
+const sprite = Sprite.from(monsterAssets.monster2)
+
+app.stage.addChild(sprite)
