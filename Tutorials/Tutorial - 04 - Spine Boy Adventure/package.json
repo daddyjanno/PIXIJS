@@ -20,6 +20,8 @@
         "webpack-dev-server": "^5.1.0"
     },
     "dependencies": {
+        "@esotericsoftware/spine-pixi": "^4.2.61",
+        "pixi-spine": "^4.0.4",
         "pixi.js": "^8.5.0"
     }
 }
