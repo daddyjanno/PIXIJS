@@ -5,6 +5,7 @@ import { addMountains } from './addMountains'
 import { addTrees } from './addTrees'
 import { addFloor } from './addFloor'
 import { addTrain } from './addTrain'
+import { addSmokes } from './addSmokes'
 
 console.log('Tutorial 03')
 
@@ -24,3 +25,4 @@ addMountains(app)
 addTrees(app)
 addFloor(app)
 addTrain(app, trainContainer)
+addSmokes(app, trainContainer)
