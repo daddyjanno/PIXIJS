@@ -2,12 +2,16 @@ import { Container, Graphics } from 'pixi.js'
 
 export function addTrain(app, container) {
     const head = createTrainHead(app)
-    container.addChild(head)
+    const carriage = createTrainCarriage(app)
+    carriage.x = -carriage.width
+
+    container.addChild(head, carriage)
 
     const scale = 0.75
     container.scale.set(scale)
     container.x = app.screen.width / 2 - head.width / 2
     container.y = app.screen.height - 35 - 55 * scale
+
     app.stage.addChild(container)
 }
 
@@ -158,4 +162,73 @@ function createTrainWheel(radius) {
             )
             .fill({ color: 0x4f4f4f })
     )
+}
+
+function createTrainCarriage(app) {
+    const container = new Container()
+
+    const containerHeight = 125
+    const containerWidth = 200
+    const containerRadius = 15
+    const edgeHeight = 25
+    const edgeExcess = 20
+    const connectorWidth = 30
+    const connectorHeight = 10
+    const connectorGap = 10
+    const connectorOffsetY = 20
+
+    const graphics = new Graphics()
+        .roundRect(
+            edgeExcess / 2,
+            -containerHeight,
+            containerWidth,
+            containerHeight,
+            containerRadius
+        )
+        .fill({ color: 0x725f19 })
+        .rect(
+            0,
+            containerRadius - containerHeight - edgeHeight,
+            containerWidth + edgeExcess,
+            edgeHeight
+        )
+        .fill({ color: 0x52431c })
+
+        // Draw the connectors
+        .rect(
+            containerWidth + edgeExcess / 2,
+            -connectorOffsetY - connectorHeight,
+            connectorWidth,
+            connectorHeight
+        )
+        .rect(
+            containerWidth + edgeExcess / 2,
+            -connectorOffsetY - connectorHeight * 2 - connectorGap,
+            connectorWidth,
+            connectorHeight
+        )
+        .fill({ color: 0x121212 })
+
+    const wheelRadius = 35
+    const wheelGap = 40
+    const centerX = (containerWidth + edgeExcess) / 2
+    const offsetX = wheelRadius + wheelGap / 2
+
+    const backWheel = createTrainWheel(wheelRadius)
+    const frontWheel = createTrainWheel(wheelRadius)
+
+    backWheel.x = centerX - offsetX
+    frontWheel.x = centerX + offsetX
+    frontWheel.y = backWheel.y = 25
+
+    app.ticker.add((time) => {
+        const dr = time.deltaTime * 0.15
+
+        backWheel.rotation += dr
+        frontWheel.rotation += dr
+    })
+
+    container.addChild(graphics, backWheel, frontWheel)
+
+    return container
 }
