@@ -2,8 +2,10 @@ import {
     AnimatedSprite,
     Application,
     Assets,
+    BlurFilter,
     Container,
     Graphics,
+    NoiseFilter,
     Sprite,
     Spritesheet,
     Text,
@@ -216,16 +218,20 @@ const circle = new Graphics()
 // walkingSprite.animationSpeed = 0.13
 // walkingSprite.play()
 
-// const texture = await Assets.load('https://i.imgur.com/LBTK8dw.png')
+const texture = await Assets.load('https://i.imgur.com/LBTK8dw.png')
 
-// const tilingSprite = new TilingSprite({
-//     texture,
-//     width: app.screen.width,
-//     height: app.screen.height,
-// })
+const tilingSprite = new TilingSprite({
+    texture,
+    width: app.screen.width,
+    height: app.screen.height,
+})
+tilingSprite.filters = [
+    new BlurFilter({ strength: 5 }),
+    new NoiseFilter({ noise: 0.5 }),
+]
 
-// app.ticker.add(() => {
-//     tilingSprite.tilePosition.x -= 1
-// })
+app.ticker.add(() => {
+    tilingSprite.tilePosition.x -= 0.5
+})
 
 app.stage.addChild(tilingSprite)
